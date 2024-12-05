@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package bridge;
+option go_package = "bridge/proto";
+
+service BridgeService {
+  rpc SendBridge (SendBridgeRequest) returns (SendBridgeResponse) {}
+  rpc GetBridgeStatus (GetBridgeStatusRequest) returns (stream BridgeStatusUpdate) {}
+}
+
+message SendBridgeRequest {
+  uint64 from_chain_id = 1;
+  uint64 to_chain_id = 2;
+  string token_name = 3;
+  string amount = 4; // string representation of big.Int
+}
+
+message SendBridgeResponse {
+  string bridge_id = 1;
+}
+
+message GetBridgeStatusRequest {
+  string bridge_id = 1;
+}
+
+message BridgeStatusUpdate {
+  enum Status {
+    PENDING = 0;
+    SENT = 1;
+    FAILED = 2;
+    RECEIVED = 3;
+  }
+  Status status = 1;
+  string transaction_hash = 2;
+  string error = 3;
+}

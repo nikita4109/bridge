@@ -1,0 +1,7 @@
+{
+    "chain_rpcs": {
+        "1": "https://ethereum-rpc.publicnode.com",
+        "5000": "https://rpc.mantle.xyz"
+    },
+    "grpc_port": "50051"
+}
