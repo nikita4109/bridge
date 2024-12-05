@@ -1,9 +1,13 @@
 ## Usage
 
-To run the service:
+To run the service, use the following command:
 
+`
 PKEY=$YOUR_PRIVATE_KEY docker compose up -d --build
+`
 
-For tests I implemented client, to run it:
+For testing, I have implemented a client. To run the client, use:
 
+`
 go run cmd/client/main.go
+`
